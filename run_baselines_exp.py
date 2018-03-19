@@ -42,21 +42,24 @@ from __future__ import (absolute_import, division, print_function,
 
 import json
 import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "5"
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import numpy as np
 import six
 import tensorflow as tf
 
-from fewshot.configs import get_config
-from fewshot.configs.jake_imagenet_config import *
+from fewshot.configs.config_factory import get_config
+#from fewshot.configs.jake_imagenet_config import *
 from fewshot.configs.mini_imagenet_config import *
 from fewshot.configs.omniglot_config import *
-from fewshot.data import get_dataset
-from fewshot.data.jake_imagenet_refinement import JakeImageNetRefinementMetaDataset
-from fewshot.data.mini_imagenet_refinement_s import MiniImageNetRefinementMetaDatasetS
-from fewshot.data.omniglot import OmniglotEpisode
-from fewshot.data.omniglot import OmniglotMetaDataset
-from fewshot.data.omniglot_refinement import OmniglotRefinementMetaDataset
+from fewshot.data.data_factory import get_dataset
+from fewshot.data.omniglot import OmniglotDataset
+#from fewshot.data.jake_imagenet_refinement import JakeImageNetRefinementMetaDataset
+#from fewshot.data.mini_imagenet_refinement_s import MiniImageNetRefinementMetaDatasetS
+#from fewshot.data.omniglot import OmniglotEpisode remove by dongzhuoyao
+from fewshot.data.episode import Episode
+#from fewshot.data.omniglot import OmniglotMetaDataset
+#from fewshot.data.omniglot_refinement import OmniglotRefinementMetaDataset
 from fewshot.models.nnlib import cnn, weight_variable
 from fewshot.utils import logger
 from fewshot.utils.batch_iter import BatchIterator
@@ -375,7 +378,7 @@ def preprocess_batch(batch):
     else:
       y_unlabel = None
 
-    return OmniglotEpisode(
+    return Episode(
         x_train,
         y_train,
         x_test,

@@ -33,10 +33,10 @@ from fewshot.utils import logger
 log = logger.get()
 
 flags = tf.flags
-flags.DEFINE_bool("disable_distractor", False,
-                  "Whether or not to disable distractors")
-flags.DEFINE_float("label_ratio", 0.1,
-                   "Portion of labeled images in the training set.")
+#flags.DEFINE_bool("disable_distractor", False,"Whether or not to disable distractors")
+#flags.DEFINE_float("label_ratio", 0.1,
+#                   "Portion of labeled images in the training set.")
+# comment by dongzhuoyao
 FLAGS = tf.flags.FLAGS
 
 

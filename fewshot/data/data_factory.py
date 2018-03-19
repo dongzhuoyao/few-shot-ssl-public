@@ -23,7 +23,7 @@ import os
 import tensorflow as tf
 
 flags = tf.flags
-flags.DEFINE_string("data_root", "data", "Data root")
+#flags.DEFINE_string("data_root", "data", "Data root") remove by dongzhuoyao
 FLAGS = tf.flags.FLAGS
 
 DATASET_REGISTRY = {}

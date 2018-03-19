@@ -99,8 +99,16 @@ from tqdm import tqdm
 
 log = logger.get()
 
+
 flags = tf.flags
 flags.DEFINE_bool("eval", False, "Whether to only run evaluation")
+
+flags.DEFINE_string("dataset","omniglot","dataset input")
+flags.DEFINE_string("model","basic","what's your model?")
+flags.DEFINE_float("label_ratio",0.1,"label ratio?")
+flags.DEFINE_string("data_root","/data1/dataset/fewshot","data root")
+flags.DEFINE_bool("disable_distractor", False,"Whether or not to disable distractors")
+
 flags.DEFINE_bool("use_test", False, "Use the test set or not")
 flags.DEFINE_float("learn_rate", None, "Start learning rate")
 flags.DEFINE_integer("nclasses_eval", 5, "Number of classes for testing")
@@ -110,8 +118,6 @@ flags.DEFINE_integer("num_eval_episode", 600, "Number of evaluation episodes")
 flags.DEFINE_integer("num_test", -1, "Number of test images per episode")
 flags.DEFINE_integer("num_unlabel", 5, "Number of unlabeled for training")
 flags.DEFINE_integer("seed", 0, "Random seed")
-flags.DEFINE_string("dataset", "omniglot", "Dataset name")
-flags.DEFINE_string("model", "basic", "Model name")
 flags.DEFINE_string("pretrain", None, "Model pretrain path")
 flags.DEFINE_string("results", "./results", "Checkpoint save path")
 FLAGS = tf.flags.FLAGS
